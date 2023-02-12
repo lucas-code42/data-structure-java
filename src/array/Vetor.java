@@ -14,11 +14,13 @@ public class Vetor {
         this.totalDeAlunos++;
     }
 
+    // valida de uma posicao é ocupada ou null
     private boolean posicaoOcupada(int posicao) {
         return posicao >= 0 && posicao < this.totalDeAlunos;
     }
 
 
+    // pega um aluno de acordo com sua posição
     public Aluno pega(int posicao) {
         if (!posicaoOcupada(posicao)) {
             throw new IllegalArgumentException("posição inválida");
@@ -26,8 +28,9 @@ public class Vetor {
         return this.alunos[posicao];
     }
 
+    // remove um aluno de acordo com sua posicao
     public void remove(int posicao) {
-        if (!this.posicapValida(posicao)) {
+        if (!this.posicaoValida(posicao)) {
             throw new IllegalArgumentException("posição inválida");
         }
 
@@ -38,12 +41,14 @@ public class Vetor {
         this.totalDeAlunos--;
     }
 
-    private boolean posicapValida(int posicao) {
+    // valida de uma posicao não esta fora dos indices do array
+    private boolean posicaoValida(int posicao) {
         return posicao >= 0 && posicao <= this.totalDeAlunos;
     }
 
+    // adiciona um aluno no array
     public void adiciona(int posicao, Aluno aluno) {
-        if (!this.posicapValida(posicao)) {
+        if (!this.posicaoValida(posicao)) {
             throw new IllegalArgumentException("posição inválida");
         }
 
@@ -54,6 +59,7 @@ public class Vetor {
         this.totalDeAlunos++;
     }
 
+    // verifica se existe o mesmo aluno passado para o metodo
     public boolean contem(Aluno aluno) {
         for (int i = 0; i < this.totalDeAlunos; i++) {
             if (aluno.equals(this.alunos[i])) {
@@ -63,6 +69,7 @@ public class Vetor {
         return false;
     }
 
+    // devolve a última posicao livre do array
     public int tamanho() {
         return this.totalDeAlunos;
     }
