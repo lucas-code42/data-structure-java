@@ -8,8 +8,21 @@ public class Vetor {
     private int totalDeAlunos = 0;
 
 
+    // dobra o tamanho do array, criando uma cópia do mesmo porem com o dobro da posição
+    private void garenteEspaco() {
+        if (this.totalDeAlunos == this.alunos.length) {
+            Aluno[] novoArray = new Aluno[this.alunos.length * 2];
+            for (int i = 0; i < this.alunos.length; i++) {
+                novoArray[i] = this.alunos[i];
+            }
+            this.alunos = novoArray;
+        }
+
+    }
+
     // Solução leva tempo constante, criamos um índice que aponta um buraco no array
     public void adiciona(Aluno aluno) {
+        this.garenteEspaco();
         this.alunos[this.totalDeAlunos] = aluno;
         this.totalDeAlunos++;
     }
@@ -48,6 +61,7 @@ public class Vetor {
 
     // adiciona um aluno no array
     public void adiciona(int posicao, Aluno aluno) {
+        this.garenteEspaco();
         if (!this.posicaoValida(posicao)) {
             throw new IllegalArgumentException("posição inválida");
         }
