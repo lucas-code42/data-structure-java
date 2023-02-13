@@ -8,9 +8,15 @@ public class DoublyLinkedList {
 
     // adiciona no começo da lista
     public void adicionaNoComeco(Object elemento) {
-       if (this.totalDeElementos == 0) {
-           Celula
-       }
+        if (this.totalDeElementos == 0) {
+            Celula nova = new Celula(elemento);
+            this.primeira = nova;
+            this.ultima = nova;
+        } else {
+            Celula nova = new Celula(this.primeira, elemento);
+            this.primeira.setAnterior(nova);
+            this.primeira = nova;
+        }
         this.totalDeElementos++;
     }
 
@@ -19,12 +25,13 @@ public class DoublyLinkedList {
     public void adiciona(Object elemento) {
         if (this.totalDeElementos == 0) {
             this.adicionaNoComeco(elemento);
+        } else {
+            Celula nova = new Celula(elemento);
+            this.ultima.setProximo(nova);
+            nova.setAnterior(this.ultima);
+            this.ultima = nova;
+            this.totalDeElementos++;
         }
-        Celula nova = new Celula(elemento, null);
-        this.ultima.setProximo(nova);
-        this.ultima = nova;
-
-        this.totalDeElementos++;
     }
 
     // add no meio da lista
@@ -36,12 +43,16 @@ public class DoublyLinkedList {
             this.adiciona(elemento);
         } else {
             Celula anterior = this.pegaCelula(posicao - 1);
-            Celula nova = new Celula(elemento, anterior.getProximo());
+            Celula proxima = anterior.getProximo();
 
+
+            Celula nova = new Celula(anterior.getProximo(), elemento);
+            nova.setAnterior(anterior);
             anterior.setProximo(nova);
-        }
 
-        this.totalDeElementos++;
+            proxima.setAnterior(nova);
+            this.totalDeElementos++;
+        }
 
     }
 
@@ -68,9 +79,9 @@ public class DoublyLinkedList {
         return this.pegaCelula(posicao).getElemento();
     }
 
-    public void removeDoComeco(int posicao) {
+    public void removeDoComeco() {
         if (this.totalDeElementos == 0) {
-            throw new IllegalArgumentException("lista vazia");
+            return;
         }
 
         this.primeira = this.primeira.getProximo();
@@ -111,6 +122,20 @@ public class DoublyLinkedList {
         builder.append("]");
         return builder.toString();
     }
+
+    public void removeDoFim() {
+        if (this.totalDeElementos == 1) {
+            this.removeDoComeco();
+        } else {
+            Celula penultima = this.ultima.getAnterior();
+            penultima.setProximo(null);
+            this.ultima = penultima;
+            this.totalDeElementos--;
+        }
+    }
+
+
+
 }
 
 

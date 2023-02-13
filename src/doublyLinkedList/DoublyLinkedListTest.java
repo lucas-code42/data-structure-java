@@ -27,10 +27,14 @@ public class DoublyLinkedListTest {
         System.out.println(lista.tamanho());
 
 
-        lista.removeDoComeco(0);
+        lista.removeDoComeco();
 
         System.out.println(lista);
         System.out.println(lista.tamanho());
+
+
+        lista.removeDoFim();
+        System.out.println(lista);
 
 
     }
