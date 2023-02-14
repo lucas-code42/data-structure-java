@@ -2,9 +2,10 @@ package doublyLinkedList;
 
 
 public class Celula {
+
     private Object elemento;
-    private Celula proximo;
     private Celula anterior;
+    private Celula proximo;
 
     public Celula(Object elemento) {
         this(null, elemento);
@@ -15,25 +16,16 @@ public class Celula {
         this.proximo = proximo;
     }
 
+    public Object getElemento() {
+        return elemento;
+    }
+
     public Celula getProximo() {
         return proximo;
     }
 
     public void setProximo(Celula proximo) {
         this.proximo = proximo;
-    }
-
-    public Object getElemento() {
-        return elemento;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Celula{" +
-                "elemento=" + elemento +
-                ", proximo=" + proximo +
-                '}';
     }
 
     public Celula getAnterior() {

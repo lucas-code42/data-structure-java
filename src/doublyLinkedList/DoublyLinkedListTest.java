@@ -36,6 +36,9 @@ public class DoublyLinkedListTest {
         lista.removeDoFim();
         System.out.println(lista);
 
+        lista.remove(3);
+        System.out.println(lista);
+
 
     }
 
