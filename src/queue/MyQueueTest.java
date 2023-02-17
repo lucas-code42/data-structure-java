@@ -31,6 +31,5 @@ public class MyQueueTest {
         javaQ.poll();
         System.out.println(javaQ);
 
-
     }
 }

@@ -2,7 +2,7 @@ package linkedList;
 
 public class LinkedListTest {
     public static void main(String[] args) {
-        LinkedList lista = new LinkedList();
+        LinkedList<String> lista = new LinkedList<String>();
 
         System.out.println(lista);
         lista.adicionaNoComeco("teste1");

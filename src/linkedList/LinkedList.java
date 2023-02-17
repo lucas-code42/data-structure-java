@@ -1,6 +1,6 @@
 package linkedList;
 
-public class LinkedList {
+public class LinkedList<S> {
 
     private Celula primeira = null;
     private Celula ultima = null;
